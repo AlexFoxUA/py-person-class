@@ -1,18 +1,16 @@
 class Person:
-    people = {}
+    people: dict[str, "Person"] = {}
 
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int) -> None:
         self.name = name
         self.age = age
         Person.people[name] = self
 
 
-def create_person_list(data):
-
+def create_person_list(data: list[dict[str, int | str]]) -> list[Person]:
     Person.people = {}
 
-    persons = []
-
+    persons: list[Person] = []
     for item in data:
         persons.append(Person(item["name"], item["age"]))
 
